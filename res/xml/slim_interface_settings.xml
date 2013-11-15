@@ -49,6 +49,12 @@
         android:title="@string/lockscreen_tweaks_title"
         android:fragment="com.android.settings.orion.LockscreenTweaks" />
 
+      <PreferenceScreen
+                android:key="navigation_settings"
+                android:fragment="com.android.settings.slim.NavigationSettings"
+                android:title="@string/navigation_settings_title"
+                />
+                
     <PreferenceScreen
         android:key="density_changer"
         android:title="@string/lcd_density_title"
