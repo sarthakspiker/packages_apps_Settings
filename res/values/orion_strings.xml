@@ -16,7 +16,7 @@
      <string name="orion_version">Orion Version</string>
      <string name="orion_version_default">Unknown</string>
      <string name="interface_settings_title">Universe</string>
-         
+
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on color below to apply</string>
@@ -26,6 +26,10 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
     <string name="color_default">Default</string>
+
+    <!-- Preference category for LAN development settings. [CHAR LIMIT=25] -->
+    <string name="debug_LAN_category">LAN Settings</string>
+    <!-- Hostname setting -->
+    <string name="device_hostname">Device hostname</string>
     
 </resources>
-
