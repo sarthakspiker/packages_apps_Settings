@@ -280,5 +280,4 @@ private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
         }
         return false;
     }
-
 }
