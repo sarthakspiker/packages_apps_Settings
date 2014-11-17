@@ -1716,4 +1716,7 @@
     <!-- WiFi auto-configure priorities -->
     <string name="wifi_auto_config_priorities">Automatic priority</string>
 
+    <!-- Sound & notification > Other sounds: Title for the option enabling sound on volume slide adjust. [CHAR LIMIT=30] -->
+    <string name="volume_adjust_sound_title">Volume slider sound</string>
+
 </resources>
