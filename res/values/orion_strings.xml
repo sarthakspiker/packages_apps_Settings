@@ -173,6 +173,10 @@
     <string name="volbtn_cursor_control_off">Disabled</string>
     <string name="volbtn_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volbtn_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
+    
+    <!-- Whether to display IME switcher notifcation -->
+     <string name="ime_switcher_notify">Selector notification</string>
+     <string name="ime_switcher_notify_summary">Display input method selector notification</string>
 
    <!-- Dashboard tileview double lines -->
     <string name="dashboard_tileview_double_lines_title">Dashboard tile view title</string>
