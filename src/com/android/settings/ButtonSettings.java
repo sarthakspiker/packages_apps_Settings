@@ -78,8 +78,8 @@ private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
     private static final int ACTION_VOICE_SEARCH = 4;
     private static final int ACTION_IN_APP_SEARCH = 5;
     private static final int ACTION_LAUNCH_CAMERA = 6;
-    private static final int ACTION_LAST_APP = 7;
-    private static final int ACTION_SLEEP = 8;
+    private static final int ACTION_SLEEP = 7;
+    private static final int ACTION_LAST_APP = 8;
 
     // Masks for checking presence of hardware keys.
     // Must match values in frameworks/base/core/res/res/values/config.xml
@@ -138,7 +138,7 @@ private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
             int defaultLongPressAction = res.getInteger(
                     com.android.internal.R.integer.config_longPressOnHomeBehavior);
             if (defaultLongPressAction < ACTION_NOTHING ||
-                    defaultLongPressAction > ACTION_IN_APP_SEARCH) {
+                    defaultLongPressAction > ACTION_LAST_APP) {
                 defaultLongPressAction = ACTION_NOTHING;
             }
 
@@ -148,7 +148,6 @@ private static final String DISABLE_NAV_KEYS = "disable_nav_keys";
                     defaultDoubleTapAction > ACTION_IN_APP_SEARCH) {
                 defaultDoubleTapAction = ACTION_NOTHING;
             }
-
             int longPressAction = Settings.System.getInt(resolver,
                     Settings.System.KEY_HOME_LONG_PRESS_ACTION,
                     defaultLongPressAction);
