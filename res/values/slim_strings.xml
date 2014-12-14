@@ -1093,4 +1093,9 @@
     <string name="weather_colorize_all_icons_title">Colorize all icons</string>
     <string name="weather_colorize_all_icons_summary">Enable to colorize all icons, disable to colorize only the monochrome icons</string>
 
+
+    <!-- Weather in status bar -->
+    <string name="status_bar_show_weather_title">Show weather</string>
+    <string name="status_bar_show_weather_summary">Show the weather above the Quick Settings panel</string>
+
 </resources>
