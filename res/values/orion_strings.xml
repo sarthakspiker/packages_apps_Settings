@@ -162,6 +162,10 @@
      
    <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
+    
+    <!-- Volume button skips music tracks -->
+    <string name="volbtn_music_controls_title">Playback control</string>
+    <string name="volbtn_music_controls_summary">When the screen is off, long pressing the volume keys will seek music tracks</string>
 
    <!-- Dashboard tileview double lines -->
     <string name="dashboard_tileview_double_lines_title">Dashboard tile view title</string>
