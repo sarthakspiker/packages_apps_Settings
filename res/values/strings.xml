@@ -5270,6 +5270,7 @@
     <string name="close_dialog">OK</string>
     <string name="sim_enabler_title">SIM Enablers</string>
     <string name="sim_enabler_summary">SIM is %1$s</string>
+    <string name="sim_enabler_sim">SIM</string>
     <string name="sim_enabled">enabled</string>
     <string name="sim_disabled">disabled</string>
     <string name="sim_missing">missing or error</string>
