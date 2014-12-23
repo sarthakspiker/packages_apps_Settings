@@ -30,4 +30,10 @@
 
     </PreferenceCategory>
 
+    <!-- Network traffic -->
+    <PreferenceScreen
+        android:key="network_traffic"
+        android:fragment="com.android.settings.xenonhd.Traffic"
+        android:title="@string/network_traffic_title" />
+
 </PreferenceScreen>
