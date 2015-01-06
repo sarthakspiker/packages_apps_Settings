@@ -423,6 +423,14 @@
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
     <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
 
+    <!-- StatusBar Clock style -->
+    <string name="clock_font_style_title">Clock font style</string>
+    <string name="clock_font_bold">Bold</string>
+    <string name="clock_font_condensed">Condensed</string>
+    <string name="clock_font_light">Light</string>
+    <string name="clock_font_light_italic">Light italic</string>
+    <string name="clock_font_normal">Normal</string>
+
     <!-- Status bar - Battery Options -->
     <string name="battery_icon_options_title">Battery icon options</string>
 
