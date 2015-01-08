@@ -1734,4 +1734,8 @@
 	<string name="lockscreen_tweaks_title">Lockscreen tweaks</string>
 	<string name="lockscreen_tweaks">Lockscreen tweaks</string>
 
+    <!-- Linked / unlinked notification volume -->
+    <string name="link_volume_option_title">Link ring and notification volumes</string>
+    <string name="notification_volume_option_title">Notification volume</string>
+
 </resources>
