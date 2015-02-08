@@ -64,6 +64,7 @@ import com.android.internal.util.slim.ActionHelper;
 import com.android.internal.util.slim.ImageHelper;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.slim.PolicyHelper;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -553,12 +554,12 @@ public class ActionListViewSettings extends ListFragment implements
             case PIE_SECOND:
                 return ActionHelper.getPieSecondLayerConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
+			case POWER_MENU_SHORTCUT:
+                return PolicyHelper.getPowerMenuConfigWithDescription(
+                    mActivity, mActionValuesKey, mActionEntriesKey);
 /* Disabled for now till all features are back. Enable it step per step!!!!!!
             case NAV_RING:
                 return ActionHelper.getNavRingConfigWithDescription(
-                    mActivity, mActionValuesKey, mActionEntriesKey);
-            case POWER_MENU_SHORTCUT:
-                return PolicyHelper.getPowerMenuConfigWithDescription(
                     mActivity, mActionValuesKey, mActionEntriesKey);
             case SHAKE_EVENTS_DISABLED:
                 return ActionHelper.getDisabledShakeApps(mActivity);
@@ -581,12 +582,12 @@ public class ActionListViewSettings extends ListFragment implements
             case PIE_SECOND:
                 ActionHelper.setPieSecondLayerConfig(mActivity, actionConfigs, reset);
                 break;
+            case POWER_MENU_SHORTCUT:
+                PolicyHelper.setPowerMenuConfig(mActivity, actionConfigs, reset);
+                break;
 /* Disabled for now till all features are back. Enable it step per step!!!!!!
             case NAV_RING:
                 ActionHelper.setNavRingConfig(mActivity, actionConfigs, reset);
-                break;
-            case POWER_MENU_SHORTCUT:
-                PolicyHelper.setPowerMenuConfig(mActivity, actionConfigs, reset);
                 break;
             case SHAKE_EVENTS_DISABLED:
                 ActionHelper.setDisabledShakeApps(mActivity, actionConfigs, reset);
@@ -639,11 +640,10 @@ public class ActionListViewSettings extends ListFragment implements
             Drawable d = null;
             String iconUri = getItem(position).getIcon();
             if (mActionMode == POWER_MENU_SHORTCUT) {
-/* Disabled for now till slims power menu is back!!!!!!!!!!!!!!
                 d = ImageHelper.resize(
                         mActivity, PolicyHelper.getPowerMenuIconImage(mActivity,
                         getItem(position).getClickAction(),
-                        iconUri, false), 36); */
+                        iconUri), 36);
             } else {
                 d = ImageHelper.resize(
                         mActivity, ActionHelper.getActionIconImage(mActivity,

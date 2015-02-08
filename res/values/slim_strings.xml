@@ -574,6 +574,14 @@
     <string name="shortcut_action_ring_vib">Ring/Vib</string>
     <string name="shortcut_action_ring_silent">Ring/Silent</string>
     <string name="shortcut_action_ring_vib_silent">Ring/Vib/Silent</string>
+
+    <string name="shortcut_action_airplane">Airplane mode</string>
+    <string name="shortcut_action_power_off">Power off</string>
+    <string name="shortcut_action_reboot">Reboot</string>
+    <string name="shortcut_action_sound">Sound</string>
+    <string name="shortcut_action_users">Users</string>
+    <string name="shortcut_action_lockdown">Lock now</string>
+
     <string name="shortcut_action_longpress">Longpress:</string>
     <string name="shortcut_action_select_action_longpress">Choose longpress action:</string>
     <string name="shortcut_action_select_action">Choose action:</string>
@@ -1276,6 +1284,13 @@
     <!-- Volume rocker music seek options -->
     <string name="volbtn_music_controls_title">Volume rocker music controls</string>
     <string name="volbtn_music_controls_summary">When screen off, long-pressing the volume rockers will seek music tracks</string>
+
+    <!-- Power Menu -->
+    <string name="power_menu_title">Global menu</string>
+
+    <!-- Chamber of Secrets -->
+    <string name="chamber_title">Chamber of secrets</string>
+    <string name="chamber_toast">The chamber of secrets has opened</string>
 
     <!-- Category title for Charging sounds (Power state change) specific Settings.
          [CHAR LIMIT=40] -->
