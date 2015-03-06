@@ -31,5 +31,8 @@
     <string name="debug_LAN_category">LAN Settings</string>
     <!-- Hostname setting -->
     <string name="device_hostname">Device hostname</string>
-    
+
+    <!-- BitSyko Layers -->
+    <string name="bitsyko_layers">Layers</string>
+
 </resources>
