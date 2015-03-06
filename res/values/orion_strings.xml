@@ -60,5 +60,8 @@
     <string name="backlight_summary_enabled">Enabled</string>
     <string name="settings_reset_button">Reset</string>
 
+    <!-- BitSyko Layers -->
+    <string name="bitsyko_layers">Layers</string>
+
 </resources>
 
