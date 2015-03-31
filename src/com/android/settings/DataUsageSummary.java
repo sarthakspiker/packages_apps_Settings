@@ -585,10 +585,11 @@ public class DataUsageSummary extends HighlightingFragment implements Indexable 
             case R.id.data_usage_menu_cellular_networks: {
                 final Intent intent = new Intent(Intent.ACTION_MAIN);
                 if (TelephonyManager.getDefault().getPhoneCount() > 1) {
-                    intent.setClassName("com.android.phone","com.android.phone.msim.SelectSubscription");
-                    intent.putExtra(SelectSubscription.PACKAGE,
+                    intent.setClassName("com.android.phone",
+                            "com.android.phone.msim.SelectSubscription");
+                    intent.putExtra("PACKAGE",
                              "com.android.phone");
-                    intent.putExtra(SelectSubscription.TARGET_CLASS,
+                    intent.putExtra("TARGET_CLASS",
                             "com.android.phone.MobileNetworkSettings");
                     intent.putExtra("TARGET_THEME", "Theme.Material.Settings");
                 } else {
