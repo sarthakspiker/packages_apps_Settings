@@ -1296,4 +1296,16 @@
     <!-- Orion OTA -->
     <string name="slimota_title">OrionOTA</string>
 
+    <!-- Weather in status bar -->
+    <string name="status_bar_show_weather_title">Show weather</string>
+    <string name="status_bar_show_weather_summary">Show the weather above the Quick Settings panel</string>
+
+    <string name="usb_not_connected">Usb not connected</string>
+
+    <!-- Zen mode related -->
+    <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
+    <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+    <string name="none_is_silent_title">None is Silent mode</string>
+    <string name="none_is_silent_summary">Silent mode always sounds alarms</string>
+
 </resources>
