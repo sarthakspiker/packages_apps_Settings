@@ -263,12 +263,12 @@
     <string name="custom_density_dialog_button_got">Got it!</string>
     <string name="custom_density_dialog_button_reboot">Reboot now</string>
     
-    <!-- Break SystemUI Tuner into two parts -->
-    <string name="quick_settings_title">Quick Settings</string>
-    <string name="quick_settings_summary">Configure quick settings tiles</string>
-    <string name="status_bar_icon_blacklist_title">Status bar icons</string>
-    <string name="status_bar_icon_blacklist_summary">Configure what icons are shown on status bar</string>
-
+    <!-- Heads up -->
+    <string name="headsup_section_header">Heads up notifications</string>
+    <string name="heads_up_notifications">Heads up</string>
+    <string name="summary_heads_up_enabled">Pop-up notifications are enabled</string>
+    <string name="summary_heads_up_disabled">Pop-up notifications aredisabled</string>
+  
     <!-- Changelog -->
     <string name="changelog_crdroid_title">Changelog</string>
     <string name="changelog_crdroid_error">Unable to load changelog</string>
