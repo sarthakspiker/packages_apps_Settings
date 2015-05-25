@@ -34,14 +34,9 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.internal.util.slim.DeviceUtils;
-
-import android.database.ContentObserver;
 import android.net.Uri;
-import android.os.Handler;
-import android.preference.PreferenceScreen;
-import android.provider.Settings.SettingNotFoundException;
 import com.android.settings.Utils;
-
+import com.android.settings.slim.util.Helpers
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String TAG = "StatusBarSettings";
@@ -54,6 +49,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_BATTERY_STYLE_HIDDEN = "4";
     private static final String STATUS_BAR_BATTERY_STYLE_TEXT = "6";
+    private static final String ENABLE_TASK_MANAGER = "enable_task_manager";
 
     private SwitchPreference mStatusBarBrightnessControl;
     private PreferenceScreen mClockStyle;
@@ -64,6 +60,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private int mbatteryShowPercent;
     private SwitchPreference mNetworkArrows;
     private SwitchPreference mTicker;
+    private SwitchPreference mEnableTaskManager;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -121,6 +119,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         updateNetworkArrowsSummary(networkArrows);
     }
 
+        mEnableTaskManager = (SwitchPreference) findPreference(ENABLE_TASK_MANAGER);
+        mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
+                Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mStatusBarBattery) {
@@ -168,6 +170,20 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         enableStatusBarBatteryDependents(String.valueOf(mbatteryStyle));
     }
 
+     @Override
+     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
+             final Preference preference) {
+         final ContentResolver resolver = getActivity().getContentResolver();
+        if  (preference == mEnableTaskManager) {
+            boolean checked = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ENABLE_TASK_MANAGER, checked ? 1:0);
+            Helpers.restartSystemUI();
+            return true;
+        }
+         // If we didn't handle it, let preferences handle it.		
+         return super.onPreferenceTreeClick(preferenceScreen, preference);
+     }
     private void updateStatusBarBrightnessControl() {
         try {
             if (mStatusBarBrightnessControl != null) {
