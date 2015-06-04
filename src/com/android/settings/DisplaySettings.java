@@ -25,6 +25,9 @@ import android.view.WindowManager;
 import android.view.WindowManagerGlobal;
 import android.view.WindowManagerImpl;
 import android.widget.Toast;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.notification.DropDownPreference;
 import com.android.settings.notification.DropDownPreference.Callback;
@@ -61,6 +64,7 @@ import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
@@ -76,6 +80,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.IWindowManager;
 import android.view.WindowManagerGlobal;
+import android.widget.Toast;
 
 import com.android.settings.slim.DisplayRotation;
 
@@ -128,7 +133,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mVolumeWake;
-    private ListPreference mLcdDensityPreference;
+    private EditTextPreference mLcdDensityPreference;
 
     private SwitchPreference mTapToWake;
 
@@ -172,7 +177,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         disableUnusableTimeouts(mScreenTimeoutPreference);
         updateTimeoutPreferenceDescription(currentTimeout);
 
-        mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
+        mLcdDensityPreference = (EditTextPreference) findPreference(KEY_LCD_DENSITY);
         if (mLcdDensityPreference != null) {
             int defaultDensity = getDefaultDensity();
             int currentDensity = getCurrentDensity();
@@ -181,28 +186,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 currentDensity = defaultDensity;
             }
 
-            int factor = defaultDensity >= 480 ? 40 : 20;
-            int minimumDensity = defaultDensity - 4 * factor;
-            int currentIndex = -1;
-            String[] densityEntries = new String[7];
-            String[] densityValues = new String[7];
-            for (int idx = 0; idx < 7; ++idx) {
-                int val = minimumDensity + factor * idx;
-                int valueFormatResId = val == defaultDensity
-                        ? R.string.lcd_density_default_value_format
-                        : R.string.lcd_density_value_format;
+            int minimumDensity = getMinimumDensity();
+            int maximumDensity = getMaxmimumDensity();
+            String title = getString(R.string.lcd_density_dialog_title);
+            mLcdDensityPreference.setDialogTitle(String.format(title, minimumDensity, maximumDensity));
 
-                densityEntries[idx] = getString(valueFormatResId, val);
-                densityValues[idx] = Integer.toString(val);
-                if (currentDensity == val) {
-                    currentIndex = idx;
-                }
-            }
-            mLcdDensityPreference.setEntries(densityEntries);
-            mLcdDensityPreference.setEntryValues(densityValues);
-            if (currentIndex != -1) {
-                mLcdDensityPreference.setValueIndex(currentIndex);
-            }
             mLcdDensityPreference.setOnPreferenceChangeListener(this);
             updateLcdDensityPreferenceDescription(currentDensity);
         }
@@ -362,9 +350,15 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     private void updateLcdDensityPreferenceDescription(int currentDensity) {
-        final int summaryResId = currentDensity == getDefaultDensity()
-                ? R.string.lcd_density_default_value_format : R.string.lcd_density_value_format;
-        mLcdDensityPreference.setSummary(getString(summaryResId, currentDensity));
+        String formattedSummary;
+        if (currentDensity == DisplayMetrics.DENSITY_DEVICE) {
+           final String summary = getString(R.string.lcd_density_default_value_format);
+           formattedSummary = String.format(summary, currentDensity);
+        } else {
+           final String summary = getString(R.string.lcd_density_value_format);
+           formattedSummary = String.format(summary, currentDensity, DisplayMetrics.DENSITY_DEVICE);
+        }
+        mLcdDensityPreference.setSummary(formattedSummary);
     }
 
     private void updateDisplayRotationPreferenceDescription() {
@@ -622,8 +616,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_LCD_DENSITY.equals(key)) {
             try {
                 int value = Integer.parseInt((String) objValue);
-                writeLcdDensityPreference(preference.getContext(), value);
-                updateLcdDensityPreferenceDescription(value);
+
+                int minimumDensity = getMinimumDensity();
+                int maximumDensity = getMaxmimumDensity();
+                if (value < minimumDensity || value > maximumDensity) {
+                    final String errorMsg = getString(R.string.lcd_density_error_msg);
+                    Toast.makeText(preference.getContext(), String.format(errorMsg, minimumDensity, maximumDensity),
+                        Toast.LENGTH_LONG).show();
+                } else {
+                    writeLcdDensityPreference(preference.getContext(), value);
+                    updateLcdDensityPreferenceDescription(value);
+                }
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist display density setting", e);
             }
@@ -671,7 +674,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         return false;
     }
 
-
     /**
      * Restore the properties associated with this preference on boot
      *
@@ -690,7 +692,30 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } else {
                 Log.d(TAG, "Tap-to-wake settings restored.");
             }
+		}
+	}
+
+    private int getMinimumDensity() {
+        int defaultDensity = DisplayMetrics.DENSITY_DEVICE;
+        int factor = defaultDensity >= 480 ? 40 : 20;
+        return defaultDensity - 4 * factor;
+    }
+
+    private int getMaxmimumDensity() {
+        int defaultDensity = DisplayMetrics.DENSITY_DEVICE;
+        int factor = defaultDensity >= 480 ? 40 : 20;
+        return defaultDensity + 4 * factor;
+    }
+
+    private boolean isPostProcessingSupported() {
+        boolean ret = true;
+        final PackageManager pm = getPackageManager();
+        try {
+            pm.getPackageInfo("com.qualcomm.display", PackageManager.GET_META_DATA);
+        } catch (NameNotFoundException e) {
+            ret = false;
         }
+      return ret;
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
