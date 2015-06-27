@@ -23,7 +23,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_slim_logotype"
+            android:src="@drawable/ic_orion_logotype"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"/>
 </LinearLayout>
