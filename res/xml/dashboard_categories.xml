@@ -78,9 +78,9 @@
         <!-- Interface -->
         <dashboard-tile
                 android:id="@+id/interface_settings"
-                android:icon="@drawable/ic_settings_interface"
+                android:icon="@drawable/ic_settings_universe"
                 android:fragment="com.android.settings.slim.InterfaceSettings"
-                android:title="@string/interface_settings_title"
+                android:title="@string/universe_settings_title"
                 />
 
  <!-- BitSyko Layers App -->
