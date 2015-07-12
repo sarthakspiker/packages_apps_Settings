@@ -53,6 +53,7 @@
             android:entries="@array/advanced_reboot_entries"
             android:entryValues="@array/advanced_reboot_values"
             android:summary="@string/advanced_reboot_summary"
+			android:defaultValue="true"
             android:persistent="false" />
 
         <Preference android:key="manage_device_admin"
@@ -71,6 +72,7 @@
                 android:title="@string/install_applications"
                 android:summaryOff="@string/install_unknown_applications"
                 android:summaryOn="@string/install_unknown_applications"
+				android:defaultValue="true"
                 android:persistent="false" />
 
     </PreferenceCategory>

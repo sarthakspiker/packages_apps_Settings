@@ -66,6 +66,7 @@
         android:title="@string/root_access"
         android:persistent="false"
         android:entries="@array/root_access_entries"
+		android:defaultValue="1"
         android:entryValues="@array/root_access_values" />
 
     <ListPreference
@@ -354,7 +355,7 @@
             android:selectAllOnFocus="true"
             android:imeOptions="actionDone"
             android:inputType="textNoSuggestions"
-            android:persistent="false" />
+            android:persistent="false" /> 
 
      </PreferenceCategory>
 
