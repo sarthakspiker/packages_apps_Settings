@@ -1255,8 +1255,7 @@ public class SettingsActivity extends Activity
 		    if (!supported) {
 		    removeTile = true;
 		    }
-		}
-                } else if (id == R.id.performance_settings) {
+		        } else if (id == R.id.performance_settings) {
                     if (!(pm.hasPowerProfiles() || (showDev && !Build.TYPE.equals("user")))) {
                         removeTile = true;
                     }
