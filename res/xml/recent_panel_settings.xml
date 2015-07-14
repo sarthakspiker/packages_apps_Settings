@@ -18,6 +18,10 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/recent_panel_category">
 
+    <PreferenceCategory
+        android:key="general_recent_category"
+        android:title="@string/general_recent_category">
+
         <SwitchPreference
             android:key="use_slim_recents"
             android:title="@string/use_slim_recents_title"
@@ -27,6 +31,11 @@
             android:key="only_show_running_tasks"
             android:title="@string/show_running_tasks_title"
             android:defaultValue="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="slim_recent_category"
+        android:title="@string/slim_recent_category">
 
         <SlimSeekBarPreference
             android:key="max_apps"
@@ -79,5 +88,6 @@
             android:title="@string/recent_card_text_color_title"
             android:defaultValue="0x00ffffff"
             alphaSlider="true" />
+     </PreferenceCategory>
 
 </PreferenceScreen>
