@@ -128,6 +128,13 @@
                 android:persistent="false"
                 android:fragment="com.android.settings.notification.NotificationAccessSettings" />
 
+		<!-- Force expanded notifications -->
+        <com.android.settings.slim.SystemSettingSwitchPreference
+            android:key="force_expanded_notifications"
+            android:title="@string/notification_force_expand_title"
+            android:summary="@string/notification_force_expand_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
         <!-- Heads up notifications -->
