@@ -19,7 +19,6 @@ package com.android.settings.slim;
 import android.content.ContentResolver;
 import android.database.ContentObserver;
 import android.os.Bundle;
-<<<<<<< HEAD:src/com/android/settings/slim/StatusBar.java
 import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -30,14 +29,18 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
-
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
 import com.android.internal.util.slim.DeviceUtils;
 import android.net.Uri;
 import com.android.settings.Utils;
-import com.android.settings.slim.util.Helpers
+import com.android.settings.slim.util.Helpers;
+import android.preference.CheckBoxPreference;
+import android.text.TextUtils;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.widget.EditText;
+
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String TAG = "StatusBarSettings";
@@ -45,35 +48,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker";
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
-=======
-import android.os.Handler;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.SwitchPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
-import android.provider.Settings;
-import android.text.TextUtils;
-import android.text.Spannable;
-import android.text.SpannableStringBuilder;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
-import android.widget.EditText;
 
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
-
-public class StatusBarSettings extends SettingsPreferenceFragment implements
-        OnPreferenceChangeListener {
-    private static final String TAG = "StatusBarSettings";
-
-    private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
-    private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
-    private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
->>>>>>> 47cd591... Remove SystemUI restart for task manager:src/com/android/settings/liquid/StatusBarSettings.java
     private static final String KEY_STATUS_BAR_NETWORK_ARROWS= "status_bar_show_network_activity";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
@@ -147,11 +122,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         int networkArrows = Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_SHOW_NETWORK_ACTIVITY, 0);
         updateNetworkArrowsSummary(networkArrows);
-    }
 
         mEnableTaskManager = (SwitchPreference) findPreference(ENABLE_TASK_MANAGER);
         mEnableTaskManager.setChecked((Settings.System.getInt(resolver,
                 Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+    }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
@@ -212,10 +187,6 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         // If we didn't handle it, let preferences handle it.		
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
-    
-    private void updateCheckState(String value) {
-		if (value == null || TextUtils.isEmpty(value)) mStatusBarGreeting.setChecked(false);
-	}  
 
     private void updateClockStyleDescription() {
         if (mClockStyle == null) {
@@ -236,27 +207,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment implements
         mNetworkArrows.setSummary(summary);
     }
 
-    private void updateClockStyleDescription() {
-        if (mClockStyle == null) {
-            return;
-        }
-        if (Settings.System.getInt(getContentResolver(),
-               Settings.System.STATUS_BAR_CLOCK, 1) == 1) {
-            mClockStyle.setSummary(getString(R.string.enabled));
-        } else {
-            mClockStyle.setSummary(getString(R.string.disabled));
-         }
-    }
-
     private class StatusBarBrightnessChangedObserver extends ContentObserver {
         public StatusBarBrightnessChangedObserver(Handler handler) {
             super(handler);
         }
 
-        @Override
-        public void onChange(boolean selfChange) {
-            updateStatusBarBrightnessControl();
-        }
 
         public void startObserving() {
             getContentResolver().registerContentObserver(
