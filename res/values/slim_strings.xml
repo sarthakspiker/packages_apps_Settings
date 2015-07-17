@@ -230,7 +230,7 @@
     <string name="universe_settings_title">Universe</string>
     <string name="navigation_settings_title">Navigation</string>
     <string name="bitsyko_layers">Layers</string>
-
+    <string name="performance_settings">Performance</string>
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color Picker</string>
     <string name="press_color_to_apply">Press on color below to apply</string>
