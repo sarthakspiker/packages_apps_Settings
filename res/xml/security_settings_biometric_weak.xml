@@ -81,10 +81,6 @@
             </intent>
         </PreferenceScreen>
 
-        <SwitchPreference
-            android:key="lockscreen_bottom_shortcuts"
-            android:title="@string/lockscreen_bottom_shortcuts_title"/>
-
     </PreferenceCategory>
 
 </PreferenceScreen>
