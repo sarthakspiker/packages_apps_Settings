@@ -514,7 +514,6 @@
     <string name="qs_tile_screenshot">Screenshot</string>
     <string name="qs_expanded_desktop_tile">Expanded desktop</string>
     <string name="qs_music_play_tile">Play</string>
-    <string name="qs_tile_heads_up">Heads up</string>
 
     <string name="qs_main_tiles_title">Enlarge first row</string>
     <string name="qs_main_tiles_summary_on">Two main tiles on the first row</string>
