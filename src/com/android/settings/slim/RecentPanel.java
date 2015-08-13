@@ -255,7 +255,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         mRecentPanelExpandedMode.setValue(recentExpandedMode + "");
 
         final int location = Settings.System.getInt(getContentResolver(),
-                Settings.System.RECENTS_CLEAR_ALL_LOCATION, 0);
+                Settings.System.RECENTS_CLEAR_ALL_LOCATION, 2);
         mRecentsClearAllLocation.setValue(String.valueOf(location));
         updateRecentsLocation(location);
 
