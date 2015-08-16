@@ -1316,6 +1316,18 @@
     <!-- Orion OTA -->
     <string name="slimota_title">OrionOTA</string>
 
+    <!-- Lockscreen wallpaper -->
+    <string name="lockscreen_wallpaper_title">Wallpaper</string>
+    <string name="lockscreen_wallpaper_summary">Set lockscreen wallpaper</string>
+    <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
+    <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
+    <string name="reset_lockscreen_wallpaper">Set to default</string>
+
+    <!-- LTO download data over wi-fi only -->
+    <string name="lto_download_data_wifi_only">GPS assisted data download</string>
+    <string name="lto_download_data_wifi_only_on">Over any networks</string>
+    <string name="lto_download_data_wifi_only_off">Only over Wi\u2011Fi networks</string>
+
     <!-- Weather in status bar -->
     <string name="status_bar_show_weather_title">Show weather</string>
     <string name="status_bar_show_weather_summary">Show the weather above the Quick Settings panel</string>
