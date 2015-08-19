@@ -1150,6 +1150,7 @@
 
     <!-- Lock screen weather -->
     <string name="lock_screen_weather_settings_title">Lockscreen weather</string>
+    <string name="lock_screen_weather_settings_summary">Show weather on lockscreen</string>
     <!-- Weather settings -->
     <string name="weather_show_weather_title">Show weather</string>
     <string name="weather_show_weather_summary">Enable to show weather informations</string>
@@ -1734,4 +1735,7 @@
     <string name="notification_volume_option_title">Notification volume</string>
     <string name="ring_notification_volume_option_tile">Ring and notification volume</string>
 
+	<!-- Lockscreen tweaks -->
+	<string name="lockscreen_tweaks_title">Lockscreen tweaks</string>
+	<string name="lockscreen_tweaks">Lockscreen tweaks</string>
 </resources>
