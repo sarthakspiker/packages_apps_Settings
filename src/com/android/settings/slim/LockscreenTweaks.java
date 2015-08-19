@@ -15,9 +15,13 @@
  */
 package com.android.settings.slim;
 
+ import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 
@@ -26,10 +30,40 @@ import com.android.settings.SettingsPreferenceFragment;
 
 public class LockscreenTweaks extends SettingsPreferenceFragment {
 
+    private static final String LOCKSCREEN_BOTTOM_SHORTCUTS = "lockscreen_bottom_shortcuts";
+    private static final String KEY_LOCKSCREEN_CATEGORY = "lockscreen_category";
+    private static final String KEY_LOCKSCREEN_WALLPAPER = "lockscreen_wallpaper";
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.orion_lockscreen_tweaks);
   }
 
+	private PreferenceScreen createPreferenceHierarchy() {
+     PreferenceScreen root = getPreferenceScreen();
+        if (root != null) {
+            root.removeAll();
+        }
+        addPreferencesFromResource(R.xml.orion_lockscreen_tweaks);
+        root = getPreferenceScreen();
+        // Add package manager to check if features are available
+        PackageManager pm = getActivity().getPackageManager();
+
+     // Lockscreen wallpaper
+        PreferenceCategory lockscreenCategory = (PreferenceCategory)
+            root.findPreference(KEY_LOCKSCREEN_CATEGORY);
+		if (lockscreenCategory !=null) {
+        	PreferenceScreen lockscreenWallpaper = (PreferenceScreen)
+            lockscreenCategory.findPreference(KEY_LOCKSCREEN_WALLPAPER);
+	  		if(lockscreenWallpaper != null) {
+        		try {
+            	getActivity().getPackageManager().getPackageInfo("com.slim.wallpaperpicker", 0);
+        		}catch (PackageManager.NameNotFoundException e) {
+            		lockscreenCategory.removePreference(lockscreenWallpaper);
+        		}
+	         	return root;
+			}
+		}
+	}	
 }
+
