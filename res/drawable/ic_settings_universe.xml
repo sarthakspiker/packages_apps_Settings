@@ -7,7 +7,7 @@
 
     <group>
         <path
-            android:fillColor="@*android:color/material_deep_teal_500"
+            android:fillColor="@color/ic_settings_icons_exposed"
             android:pathData="M10.2929553986,22.768081665
 C9.60342597966,22.6304855346,8.9699954987,22.4486236572,8.88532066349,22.3639526367
 C8.80064964298,22.2792510986,8.87981987003,21.6725158691,9.06116676334,21.015586853
