@@ -16,21 +16,14 @@
 -->
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-                  xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
-                  android:key="zen_mode_settings"
-                  android:title="@string/zen_mode_settings_title" >
+    android:key="zen_mode_settings"
+    android:title="@string/zen_mode_settings_title" >
 
     <!-- When calls and notifications arrive -->
     <com.android.settings.notification.DropDownPreference
             android:key="zen_mode"
             android:title="@string/zen_mode_option_title"
             android:persistent="false" />
-
-    <!-- None to Silent mode -->
-    <com.android.settings.slim.SystemSettingSwitchPreference
-        android:key="none_is_silent"
-        android:title="@string/none_is_silent_title"
-        android:summary="@string/none_is_silent_summary" />
 
     <SwitchPreference
         android:key="music_interruptions"
