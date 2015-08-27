@@ -61,9 +61,8 @@ public class LockscreenTweaks extends SettingsPreferenceFragment {
         		}catch (PackageManager.NameNotFoundException e) {
             		lockscreenCategory.removePreference(lockscreenWallpaper);
         		}
-	         	return root;
 			}
 		}
+	   return root;
 	}	
 }
-
