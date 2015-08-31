@@ -711,6 +711,12 @@
     <string name="lockscreen_shortcuts_longpress">Longpress</string>
     <string name="lockscreen_visualizer_title">Display music visualizer</string>
 
+<!-- Lock screen bottom shortcuts -->
+    <string name="lockscreen_shortcut_title">Lockscreen shortcuts</string>
+    <string name="lockscreen_bottom_shortcuts_title">Enable bottom shortcuts</string>
+    <string name="lockscreen_bottom_shortcuts_enabled">Lockscreen phone and camera shortcuts are enabled</string>
+    <string name="lockscreen_bottom_shortcuts_disabled">Lockscreen phone and camera shortcuts are disabled</string>
+
     <!-- Lockscreen pin shuffle -->
     <string name="lock_numpad_random_title">Change the order of PIN pad numbers</string>
     <string name="lock_numpad_random_dialog_title">PIN pad random order</string>
