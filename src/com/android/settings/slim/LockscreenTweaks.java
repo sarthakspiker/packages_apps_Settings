@@ -28,15 +28,32 @@ import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class LockscreenTweaks extends SettingsPreferenceFragment {
+public class LockscreenTweaks extends SettingsPreferenceFragment 
+   implements OnPreferenceChangeListener {
 
     private static final String LOCKSCREEN_BOTTOM_SHORTCUTS = "lockscreen_bottom_shortcuts";
     private static final String KEY_LOCKSCREEN_CATEGORY = "lockscreen_category";
     private static final String KEY_LOCKSCREEN_WALLPAPER = "lockscreen_wallpaper";
+
+    private SwitchPreference mLockscreenBottomShortcuts;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.orion_lockscreen_tweaks);
+
+
+        // Lockscreen bottom shortcuts
+        mLockscreenBottomShortcuts = (SwitchPreference) findPreference(LOCKSCREEN_BOTTOM_SHORTCUTS);
+        if (mLockscreenBottomShortcuts != null) {
+            boolean lockScreenBottomShortcutsEnabled = Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_BOTTOM_SHORTCUTS, 1) == 1;
+            mLockscreenBottomShortcuts.setChecked(lockScreenBottomShortcutsEnabled);
+            mLockscreenBottomShortcuts.setSummary(lockScreenBottomShortcutsEnabled
+                    ? R.string.lockscreen_bottom_shortcuts_enabled :
+                      R.string.lockscreen_bottom_shortcuts_disabled);
+            mLockscreenBottomShortcuts.setOnPreferenceChangeListener(this);
+        }
   }
 
 	private PreferenceScreen createPreferenceHierarchy() {
@@ -64,5 +81,15 @@ public class LockscreenTweaks extends SettingsPreferenceFragment {
 			}
 		}
 	   return root;
-	}	
+	}
+	
+   @Override
+    public boolean onPreferenceChange(Preference preference, Object value) {
+        if (preference == mLockscreenBottomShortcuts) {
+            Settings.Secure.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.Secure.LOCKSCREEN_BOTTOM_SHORTCUTS,
+                    (Boolean) value ? 1 : 0);
+        }
+        return true;
+    }
 }
