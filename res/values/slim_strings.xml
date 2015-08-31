@@ -1328,6 +1328,10 @@
     <!-- Zen mode related -->
     <string name="allow_lights_title">Allow notification lights</string>
 
+    <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
+    <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
+ 
+
     <!-- Gestures -->
     <string name="gesture_settings_title">Gestures</string>
 
@@ -1473,9 +1477,6 @@
     <string name="navigation_save_button_text">Save</string>
     <string name="navigation_bar_reset_message">Delete current settings and restore the default layout?</string>
 
-    <string name="interruptions_ignore_while_media_title">Prevent audio ducking</string>
-    <string name="interruptions_ignore_while_media_summary">Do not reduce media playback volume when a notification arrives</string>
- 
     <!-- WiFi country code -->
     <string name="wifi_country_summary_prefix">Country set to</string>
     <string name="wifi_country_summary_suffix">\n(Changing this is illegal in some areas, check applicable local law)</string>
