@@ -32,8 +32,6 @@ public class LockscreenTweaks extends SettingsPreferenceFragment
    implements OnPreferenceChangeListener {
 
     private static final String LOCKSCREEN_BOTTOM_SHORTCUTS = "lockscreen_bottom_shortcuts";
-    private static final String KEY_LOCKSCREEN_CATEGORY = "lockscreen_category";
-    private static final String KEY_LOCKSCREEN_WALLPAPER = "lockscreen_wallpaper";
 
     private SwitchPreference mLockscreenBottomShortcuts;
 
@@ -66,20 +64,6 @@ public class LockscreenTweaks extends SettingsPreferenceFragment
         // Add package manager to check if features are available
         PackageManager pm = getActivity().getPackageManager();
 
-     // Lockscreen wallpaper
-        PreferenceCategory lockscreenCategory = (PreferenceCategory)
-            root.findPreference(KEY_LOCKSCREEN_CATEGORY);
-		if (lockscreenCategory !=null) {
-        	PreferenceScreen lockscreenWallpaper = (PreferenceScreen)
-            lockscreenCategory.findPreference(KEY_LOCKSCREEN_WALLPAPER);
-	  		if(lockscreenWallpaper != null) {
-        		try {
-            	getActivity().getPackageManager().getPackageInfo("com.slim.wallpaperpicker", 0);
-        		}catch (PackageManager.NameNotFoundException e) {
-            		lockscreenCategory.removePreference(lockscreenWallpaper);
-        		}
-			}
-		}
 	   return root;
 	}
 	
