@@ -15,12 +15,9 @@
  */
 package com.android.settings.slim;
 
- import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
@@ -54,19 +51,6 @@ public class LockscreenTweaks extends SettingsPreferenceFragment
         }
   }
 
-	private PreferenceScreen createPreferenceHierarchy() {
-     PreferenceScreen root = getPreferenceScreen();
-        if (root != null) {
-            root.removeAll();
-        }
-        addPreferencesFromResource(R.xml.orion_lockscreen_tweaks);
-        root = getPreferenceScreen();
-        // Add package manager to check if features are available
-        PackageManager pm = getActivity().getPackageManager();
-
-	   return root;
-	}
-	
    @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
         if (preference == mLockscreenBottomShortcuts) {
