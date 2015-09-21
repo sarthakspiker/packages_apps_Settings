@@ -40,7 +40,7 @@
         <com.android.settings.slim.SystemSettingSwitchPreference
             android:key="recents_show_search_bar"
             android:title="@string/recents_show_searchbar"
-            android:defaultValue="true" />
+            android:defaultValue="false" />
 
 
         <com.android.settings.slim.SystemSettingSwitchPreference
