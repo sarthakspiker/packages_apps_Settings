@@ -16,12 +16,15 @@
 
 package com.android.settings.slim;
 
+import android.content.ContentResolver;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -55,7 +58,7 @@ public class QsSettings extends SettingsPreferenceFragment
     private SwitchPreference mBlockOnSecureKeyguard;
     private Preference mQSTiles;
     private SwitchPreference mCustomHeader;
-    private SwitchPreference mCustomHeaderDefault;
+    private ListPreference mCustomHeaderDefault;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,16 +69,17 @@ public class QsSettings extends SettingsPreferenceFragment
         PreferenceScreen prefs = getPreferenceScreen();
 
         // Status bar custom header
-        mCustomHeader = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER);
+        mCustomHeader = (SwitchPreference) prefs.findPreference(PREF_CUSTOM_HEADER);
         mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1));
         mCustomHeader.setOnPreferenceChangeListener(this);
 
         // Status bar custom header default
-        mCustomHeaderDefault = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
-        mCustomHeaderDefault.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
         mCustomHeaderDefault.setOnPreferenceChangeListener(this);
+        int customHeaderDefault = Settings.System.getInt(getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
+        mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
 
         mQuickPulldown = (ListPreference) findPreference(PREF_QUICK_PULLDOWN);;
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
@@ -143,9 +147,10 @@ public class QsSettings extends SettingsPreferenceFragment
                     (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mCustomHeaderDefault) {
-            Settings.System.putInt(getContentResolver(),
+            int customHeaderDefault = Integer.valueOf((String) newValue);
+            Settings.System.putIntForUser(getContentResolver(), 
                     Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT,
-                    (Boolean) newValue ? 1 : 0);
+                    customHeaderDefault, UserHandle.USER_CURRENT);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_CUSTOM_HEADER,
                     0);
