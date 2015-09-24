@@ -36,6 +36,7 @@ import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.slim.qs.QSTiles;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.util.Helpers;
 
 import java.util.Locale;
 
@@ -47,11 +48,13 @@ public class QsSettings extends SettingsPreferenceFragment
     private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
 
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
     private SwitchPreference mBlockOnSecureKeyguard;
     private Preference mQSTiles;
+    private SwitchPreference mCustomHeader;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,11 @@ public class QsSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.qs_settings);
 
         PreferenceScreen prefs = getPreferenceScreen();
+
+        // Status bar custom header default
+        mCustomHeader = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
 
         mQuickPulldown = (ListPreference) findPreference(PREF_QUICK_PULLDOWN);;
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
@@ -123,6 +131,17 @@ public class QsSettings extends SettingsPreferenceFragment
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mCustomHeader) {
+           boolean customHeader = ((SwitchPreference)preference).isChecked();
+           Settings.System.putInt(getActivity().getContentResolver(),
+                   Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeader ? 1:0);
+           Helpers.restartSystemUI();
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     private void updateSmartPulldownSummary(int value) {

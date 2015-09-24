@@ -1792,9 +1792,10 @@
     <string name="development_shortcut_summary">Enable application management shortcuts in notification area and recent apps list</string>
 
   <!-- Time-context headers in notification header -->
+    <string name="contextual_title">Contextual headers</string>
     <string name="status_bar_custom_header_title">Custom header image</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
-
+    <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.</string>
     <!-- Mobile network settings in msim sim settings -->
     <string name="sim_mobile_network_settings_category_title">Mobile network settings</string>
     <string name="sim_mobile_network_settings_title">SIM %d settings</string>
