@@ -243,7 +243,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             }
         });
         final int headsUpGlobalSwitch = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_GLOBAL_SWITCH, 0);
+                Settings.System.HEADS_UP_GLOBAL_SWITCH, 1);
         mHeadsUpGlobalSwitch.setValue(String.valueOf(headsUpGlobalSwitch));
         updateHeadsUpGlobalSwitchSummary(headsUpGlobalSwitch);
 

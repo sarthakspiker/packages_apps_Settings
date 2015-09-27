@@ -164,7 +164,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
         mShowNoOngoingOnKeyguard = (SwitchPreference) findPreference(KEY_NO_ONGOING_ON_KEYGUARD);
 
         final int headsUpGlobalSwitch = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_GLOBAL_SWITCH, 0);
+                Settings.System.HEADS_UP_GLOBAL_SWITCH, 1);
         mHeadsUp = (SwitchPreference) findPreference(KEY_HEADS_UP);
         updateHeadsUpSummary(headsUpGlobalSwitch);
 
