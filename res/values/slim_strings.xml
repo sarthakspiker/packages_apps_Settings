@@ -1738,6 +1738,11 @@
 	<!-- Lockscreen tweaks -->
 	<string name="lockscreen_tweaks_title">Lockscreen tweaks</string>
 	<string name="lockscreen_tweaks">Lockscreen tweaks</string>
+	
+    <!-- Lockscreen see through -->
+    <string name="lockscreen_see_through_title">Blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lockscreen.</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string>
 
     <!-- Linked / unlinked notification volume -->
     <string name="link_volume_option_title">Link ring and notification volumes</string>

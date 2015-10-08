@@ -15,11 +15,17 @@
  */
 package com.android.settings.slim;
 
+import android.content.ContentResolver;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import com.android.settings.widget.SeekBarPreferenceCham;
 import android.provider.Settings;
 
 import com.android.settings.R;
@@ -29,14 +35,23 @@ public class LockscreenTweaks extends SettingsPreferenceFragment
    implements OnPreferenceChangeListener {
 
     private static final String LOCKSCREEN_BOTTOM_SHORTCUTS = "lockscreen_bottom_shortcuts";
+    
+	private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
 
     private SwitchPreference mLockscreenBottomShortcuts;
+	private SeekBarPreferenceCham mBlurRadius;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.orion_lockscreen_tweaks);
+        
+    ContentResolver resolver = getActivity().getContentResolver();
 
+    mBlurRadius = (SeekBarPreferenceCham) findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
+        mBlurRadius.setValue(Settings.System.getInt(resolver,
+                Settings.System.LOCKSCREEN_BLUR_RADIUS, 14));
+        mBlurRadius.setOnPreferenceChangeListener(this);
 
         // Lockscreen bottom shortcuts
         mLockscreenBottomShortcuts = (SwitchPreference) findPreference(LOCKSCREEN_BOTTOM_SHORTCUTS);
@@ -49,15 +64,34 @@ public class LockscreenTweaks extends SettingsPreferenceFragment
                       R.string.lockscreen_bottom_shortcuts_disabled);
             mLockscreenBottomShortcuts.setOnPreferenceChangeListener(this);
         }
+        
   }
 
    @Override
     public boolean onPreferenceChange(Preference preference, Object value) {
+    		ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mLockscreenBottomShortcuts) {
             Settings.Secure.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.Secure.LOCKSCREEN_BOTTOM_SHORTCUTS,
                     (Boolean) value ? 1 : 0);
         }
-        return true;
+        else if(preference ==mBlurRadius) {
+                    int width = ((Integer)value).intValue();
+            Settings.System.putInt(resolver,
+                    Settings.System.LOCKSCREEN_BLUR_RADIUS, width);
+            return true;
+		}
+        return false;
     }
+   
+   @Override
+    public void onResume() {
+    	super.onResume();
+    	}
+   
+   @Override
+   	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+    return super.onPreferenceTreeClick(preferenceScreen, preference);
+	}
+
 }
