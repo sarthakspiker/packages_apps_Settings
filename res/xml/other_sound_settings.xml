@@ -54,7 +54,8 @@
             android:title="@string/vibrate_on_touch_title"
             android:switchTextOff=""
             android:switchTextOn=""
-            android:persistent="false" />
+            android:persistent="false" 
+            android:defaultValue="false" />
 
     <!-- Volume adjust sound -->
     <SwitchPreference
