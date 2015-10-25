@@ -43,4 +43,10 @@
         android:fragment="com.android.settings.xenonhd.Traffic"
         android:title="@string/network_traffic_title" />
 
+	<com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+        android:key="double_tap_sleep_gesture"
+        android:title="@string/double_tap_to_sleep_title"
+        android:summary="@string/double_tap_to_sleep_summary"
+        android:defaultValue="true" />
+
 </PreferenceScreen>
