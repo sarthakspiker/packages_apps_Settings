@@ -21,6 +21,13 @@
             android:title="@*android:string/bugreport_title"
             android:dialogTitle="@*android:string/bugreport_title" />
 
+
+    <com.android.settings.preference.SystemSettingSwitchPreference
+        android:key="disable_fc_notifications"
+        android:title="@string/disable_fc_notifications_title"
+        android:summary="@string/disable_fc_notifications_summary"
+        android:defaultValue="false" />
+
     <PreferenceScreen
             android:key="local_backup_password"
             android:title="@string/local_backup_password_title"
@@ -60,6 +67,15 @@
         android:summary="@string/runningservices_settings_summary"
         android:fragment="com.android.settings.applications.RunningServices" />
 
+<<<<<<< HEAD
+=======
+    <com.android.settings.ColorModePreference
+        android:key="color_mode"
+        android:title="@string/picture_color_mode"
+        android:summary="@string/picture_color_mode_desc"
+        android:persistent="false" />
+
+>>>>>>> 8c40716... Allow disabling of FC dialogs [2/2]
     <PreferenceCategory android:key="debug_debugging_category"
             android:title="@string/debug_debugging_category">
 
