@@ -15,8 +15,4 @@
      <!--Orion Version-->
      <string name="orion_version">Orion Version</string>
      <string name="orion_version_default">Unknown</string>
-
-    <!-- Disabling FC notifications -->
-    <string name="disable_fc_notifications_title">Diable FC Notifications</string>
-    <string name="disable_fc_notifications_summary">This will hide all force close notificaitons</string>
 </resources>
