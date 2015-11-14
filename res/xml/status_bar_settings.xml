@@ -49,4 +49,11 @@
         android:summary="@string/double_tap_to_sleep_summary"
         android:defaultValue="true" />
 
+  <!-- carrier label -->
+
+    <PreferenceScreen
+        android:key="carrierlabel"
+        android:fragment="com.android.settings.orion.CarrierLabel"
+        android:title="@string/carrier_options" />
+
 </PreferenceScreen>
