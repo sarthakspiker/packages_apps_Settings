@@ -54,4 +54,11 @@
         android:summary="@string/status_bar_toggle_brightness_summary"
         android:defaultValue="false" />
 
+  <!-- carrier label -->
+
+    <PreferenceScreen
+        android:key="carrierlabel"
+        android:fragment="com.android.settings.orion.CarrierLabel"
+        android:title="@string/carrier_options" />
+
 </PreferenceScreen>
