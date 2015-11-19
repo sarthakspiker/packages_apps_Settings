@@ -81,8 +81,7 @@
         <item>@string/clock_date_format_custom</item>
     </string-array>
 
-<<<<<<< HEAD
-=======
+
     <!-- Recent panel -->
     <string-array name="recent_panel_expanded_mode_entries">
         <item>@string/recent_panel_expanded_mode_auto</item>
