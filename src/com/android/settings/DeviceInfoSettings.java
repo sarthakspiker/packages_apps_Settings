@@ -134,6 +134,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
         findPreference(KEY_KERNEL_VERSION).setEnabled(true);
+        setValueSummary(KEY_ORION_VERSION, "ro.orion.version");
+        findPreference(KEY_ORION_VERSION).setEnabled(true);
         findPreference(KEY_UBER_KERNEL).setEnabled(true);
         findPreference(KEY_UBER_FLAGS).setEnabled(true);
         setValueSummary(KEY_UBER_AND, "ro.uber.android");
