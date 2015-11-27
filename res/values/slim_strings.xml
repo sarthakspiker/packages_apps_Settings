@@ -92,6 +92,10 @@
     <string name="advanced_reboot_disabled">Disable</string>
     <string name="advanced_reboot_hide_on_keyguard">Hide on lock screen</string>
     <string name="advanced_reboot_show_always">Show always</string>
+    
+    <!-- About phone screen, build date -->
+    <string name="build_date">Build date</string>
+    <string name="build_date_default" translatable="false">2015-01-01-0000</string>
 
     <!-- Navigation settings -->
     <string name="navigation_settings_options_title">Navigation options</string>
