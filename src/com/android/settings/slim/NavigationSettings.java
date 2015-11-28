@@ -45,5 +45,10 @@ public class NavigationSettings extends SettingsPreferenceFragment {
             getPreferenceScreen().removePreference(hardwareKeys);
         }
     }
+    
+   @Override
+   protected int getMetricsCategory() {
+   		return 0;
+   	}
 
 }

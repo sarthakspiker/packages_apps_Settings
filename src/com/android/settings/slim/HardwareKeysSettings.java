@@ -550,6 +550,11 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         newFragment.setTargetFragment(this, 0);
         newFragment.show(getFragmentManager(), "dialog " + id);
     }
+    
+   @Override
+   protected int getMetricsCategory() {
+   		return 0;
+   	}
 
     public static class MyAlertDialogFragment extends DialogFragment {
 
