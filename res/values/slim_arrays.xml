@@ -133,6 +133,7 @@
         <item>**assist**</item>
         <item>**voice_search**</item>
         <item>**null**</item>
+     </string-array>
 
     <!-- Recent panel -->
     <string-array name="recent_panel_expanded_mode_entries">
