@@ -23,7 +23,7 @@
     android:paddingTop="8dip"
     android:paddingBottom="8dip" >
     <ImageView
-        android:id="@id/drag_handle"
+        android:id="@+id/drag_handle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_grabber"

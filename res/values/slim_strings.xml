@@ -130,6 +130,7 @@
 
     <!-- Button shorcut actions -->
     <string name="shortcut_action_back">Back</string>
+    <string name="shortcut_action_camera">Camera</string>
     <string name="shortcut_action_app">Custom app</string>
     <string name="shortcut_action_expanded_desktop">Expanded desktop</string>
     <string name="shortcut_action_home">Home</string>
