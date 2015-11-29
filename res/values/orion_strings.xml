@@ -92,7 +92,7 @@
     <string name="status_bar_battery_percentage_dialog_title">Battery percentage</string>
     <string name="status_bar_battery_percentage_default">Hidden (default)</string>
     <string name="status_bar_battery_percentage_text_inside">Inside the icon</string>
-    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>   
+    <string name="status_bar_battery_percentage_text_next">Next to the icon</string>
 
    <!-- Status bar | Network Traffic -->
     <string name="network_traffic_title">Network traffic</string>
@@ -127,5 +127,10 @@
    <!-- Double tap to sleep on lockscreen -->
     <string name="double_tap_sleep_anywhere_title">Double-tap to sleep</string>
     <string name="double_tap_sleep_anywhere_summary">Double tap lockscreen to put the device to sleep</string>
+
+    <!-- Recents Fullscreen -->
+    <string name="recents_show_fullscreen">Recents in fullscreen</string>
+    <string name="recents_fullscreen_summary_enabled">Recents in fullscreen is enabled</string>
+    <string name="recents_fullscreen_summary_disabled">Recents in fullscreen is disabled</string>
 
 </resources>

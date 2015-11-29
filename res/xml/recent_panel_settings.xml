@@ -27,7 +27,7 @@
             android:title="@string/use_slim_recents_title"
             android:defaultValue="true" />
 
- 
+
          <com.android.settings.slim.SystemSettingSwitchPreference
             android:key="recents_show_search_bar"
             android:title="@string/recents_show_searchbar"
@@ -42,6 +42,13 @@
     <PreferenceCategory
         android:key="stock_recent_category"
         android:title="@string/stock_recent_category">
+
+        <com.android.settings.slim.SystemSettingSwitchPreference
+            android:key="recents_full_screen"
+            android:title="@string/recents_show_fullscreen"
+            android:summaryOn="@string/recents_fullscreen_summary_enabled"
+            android:summaryOff="@string/recents_fullscreen_summary_disabled"
+            android:defaultValue="false" />
 
         <com.android.settings.slim.SystemSettingSwitchPreference
             android:key="show_clear_all_recents"
