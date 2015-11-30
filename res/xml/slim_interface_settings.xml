@@ -29,4 +29,9 @@
         android:fragment="com.android.settings.slim.RecentPanel"
         android:title="@string/recent_panel_category" />
 
+    <PreferenceScreen
+        android:key="battery_bar"
+        android:fragment="com.android.settings.slim.BatteryBar"
+        android:title="@string/battery_bar" />
+
 </PreferenceScreen>
