@@ -58,8 +58,8 @@
              android:dependency="show_clear_all_recents" />
 
      </PreferenceCategory>
- 
-     <PreferenceCategory
+
+    <PreferenceCategory
         android:key="slim_recent_category"
         android:title="@string/slim_recent_category">
 
