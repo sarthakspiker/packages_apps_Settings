@@ -27,6 +27,8 @@ import android.view.IWindowManager;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.internal.logging.MetricsLogger;
+
 public class NavigationSettings extends SettingsPreferenceFragment {
 
     private static final String KEY_HARDWARE_KEYS = "hardwarekeys_settings";
@@ -46,9 +48,10 @@ public class NavigationSettings extends SettingsPreferenceFragment {
         }
     }
     
-   @Override
-   protected int getMetricsCategory() {
-   		return 0;
-   	}
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsLogger.MAIN_SETTINGS;
+    }
+
 
 }

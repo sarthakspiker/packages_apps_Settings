@@ -43,6 +43,7 @@ import com.android.internal.util.slim.ActionConstants;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
 import com.android.internal.util.slim.HwKeyHelper;
+import com.android.internal.logging.MetricsLogger;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -551,10 +552,10 @@ public class HardwareKeysSettings extends SettingsPreferenceFragment implements
         newFragment.show(getFragmentManager(), "dialog " + id);
     }
     
-   @Override
-   protected int getMetricsCategory() {
-   		return 0;
-   	}
+    @Override
+    protected int getMetricsCategory() {
+        return MetricsLogger.MAIN_SETTINGS;
+    }
 
     public static class MyAlertDialogFragment extends DialogFragment {
 
