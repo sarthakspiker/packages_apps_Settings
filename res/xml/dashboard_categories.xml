@@ -95,14 +95,6 @@
                 android:targetClass="com.lovejoy777.rroandlayersmanager.menu" />
         </dashboard-tile>
 
-        <!-- Navigation -->
-        <dashboard-tile
-                android:id="@+id/navigation_settings"
-                android:icon="@drawable/ic_settings_navigation"
-                android:fragment="com.android.settings.slim.NavigationSettings"
-                android:title="@string/navigation_settings_title"
-                />
-
     </dashboard-category>
 
     <!-- DEVICE -->
@@ -110,13 +102,6 @@
             android:id="@+id/device_section"
             android:key="@string/category_key_device"
             android:title="@string/header_category_device" >
-
-        <dashboard-tile
-                android:id="@+id/button_settings"
-                android:title="@string/button_pref_title"
-                android:fragment="com.android.settings.ButtonSettings"
-                android:icon="@drawable/ic_settings_home"
-                />
 
         <!-- Home -->
         <dashboard-tile
