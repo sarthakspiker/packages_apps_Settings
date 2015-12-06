@@ -212,5 +212,11 @@
 
     <!-- Orion OTA -->
     <string name="slimota_title">OrionOTA</string>
+    
+    <!-- Left clock & date -->
+     <string name="left_clock">Left clock</string>
+     <string name="clock_date_position">Date position</string>
+     <string name="clock_date_right">Right of time</string>
+     <string name="clock_date_left">Left of time</string>
 
 </resources>
