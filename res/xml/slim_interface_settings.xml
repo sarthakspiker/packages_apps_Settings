@@ -37,10 +37,8 @@
      <PreferenceScreen
          android:key="button_settings"
          android:title="@string/button_pref_title"
-         android:fragment="com.android.settings.ButtonSettings"
-
-                />
-                
+         android:fragment="com.android.settings.ButtonSettings" />
+                                
       <PreferenceScreen
          android:key="power_menu"
          android:title="@string/power_menu_title"
@@ -51,4 +49,8 @@
         android:title="@string/lockscreen_tweaks_title"
         android:fragment="com.android.settings.orion.LockscreenTweaks" />
 
+    <PreferenceScreen
+        android:key="density_changer"
+        android:title="@string/lcd_density_title"
+        android:fragment="com.android.settings.util.Density" />
 </PreferenceScreen>
