@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.SwitchPreference;
 import android.preference.Preference;
@@ -61,12 +62,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     private static final String TAG = "StatusBar";
 
-    private static final String PREF_CUSTOM_HEADER = "status_bar_custom_header";
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
  
  
-    private SwitchPreference mCustomHeader;
-    private SwitchPreference mCustomHeaderDefault;
+    private ListPreference mCustomHeaderDefault;
     
     private boolean mCheckPreferences;
  
@@ -93,18 +92,15 @@ public class StatusBarSettings extends SettingsPreferenceFragment
              Log.e(TAG, "can't access systemui resources",e);
              return null;
          }
-         
-         // Status bar custom header
-         mCustomHeader = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER);
-         mCustomHeader.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                 Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1));
-         mCustomHeader.setOnPreferenceChangeListener(this);
- 
+       
          // Status bar custom header default
-         mCustomHeaderDefault = (SwitchPreference) prefSet.findPreference(PREF_CUSTOM_HEADER_DEFAULT);
-         mCustomHeaderDefault.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                 Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0) == 1));
+        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
          mCustomHeaderDefault.setOnPreferenceChangeListener(this);
+         
+         int customHeaderDefault = Settings.System.getInt(getActivity()
+                 .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
+         mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
+         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
          
           setHasOptionsMenu(true);
           mCheckPreferences = true;
@@ -119,24 +115,18 @@ public class StatusBarSettings extends SettingsPreferenceFragment
          AlertDialog dialog;
  
          ContentResolver resolver = getActivity().getContentResolver();
- 
-         if (preference == mCustomHeader) {
-             Settings.System.putInt(getContentResolver(),
-                     Settings.System.STATUS_BAR_CUSTOM_HEADER,
-                     (Boolean) newValue ? 1 : 0);
-             return true;
-         } else if (preference == mCustomHeaderDefault) {
-             Settings.System.putInt(getContentResolver(),
-                     Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT,
-                     (Boolean) newValue ? 1 : 0);
-             Settings.System.putInt(getContentResolver(),
-                     Settings.System.STATUS_BAR_CUSTOM_HEADER,
-                     0);
-             Settings.System.putInt(getContentResolver(),
-                     Settings.System.STATUS_BAR_CUSTOM_HEADER,
-                     1);
+         
+         if (preference == mCustomHeaderDefault) {
+
+         int customHeaderDefault = Integer.valueOf((String) newValue);
+         int index = mCustomHeaderDefault.findIndexOfValue((String) newValue);
+         Settings.System.putInt(getActivity().getContentResolver(), 
+         Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
+         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
+         createCustomView();
              return true;
           }
+          
           return false;
           
  }

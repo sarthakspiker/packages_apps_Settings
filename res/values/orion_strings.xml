@@ -156,10 +156,13 @@
     <string name="recents_show_membar_summary_off">Toggle to display available RAM memory bar on recents view</string>
 
    <!-- Time-context headers in notification header -->
+    <string name="contextual_title">Contextual headers</string>
     <string name="status_bar_custom_header_title">Custom header image</string>
     <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
-    <string name="status_bar_custom_header_default_title">Use poly HD images</string>
-    <string name="status_bar_custom_header_default_summary">Enable for poly hd images. Disable for original images.</string>
+    <string name="status_bar_custom_header_default_title">Select your images</string>
+    <string name="custom_header_image_0">Default</string>
+    <string name="custom_header_image_1">Modern</string>
+    <string name="custom_header_image_2">Poly HD</string>
      
    <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
