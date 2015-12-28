@@ -16,29 +16,59 @@
 
 package com.android.settings.slim;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.ContentResolver;
-import android.database.ContentObserver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.SwitchPreference;
+import android.provider.SearchIndexableResource;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
+import android.telephony.TelephonyManager;
+import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.search.BaseSearchIndexProvider;
+import com.android.settings.search.Indexable;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String TAG = "StatusBarSettings";
 
+    private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
+ 
+ 
+    private ListPreference mCustomHeaderDefault;
+    
+    private boolean mCheckPreferences;
+    
+    
     @Override
     protected int getMetricsCategory() {
         // todo add a constant in MetricsLogger.java
@@ -48,12 +78,60 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         addPreferencesFromResource(R.xml.status_bar_settings);
-
+        createCustomView();
+        
     }
 
+ private PreferenceScreen createCustomView() {
+       
+        mCheckPreferences = false;
+        PreferenceScreen prefSet = getPreferenceScreen();
+        ContentResolver resolver = getActivity().getContentResolver();
+ 
+        PackageManager pm = getPackageManager();
+        Resources systemUiResources;
+        try {
+             systemUiResources = pm.getResourcesForApplication("com.android.systemui");
+        } catch (Exception e) {
+            Log.e(TAG, "can't access systemui resources",e);
+            return null;
+        }
+        
+        // Status bar custom header default
+        mCustomHeaderDefault = (ListPreference) findPreference(PREF_CUSTOM_HEADER_DEFAULT);
+        mCustomHeaderDefault.setOnPreferenceChangeListener(this);
+         
+        int customHeaderDefault = Settings.System.getInt(getActivity()
+                 .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
+         mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
+         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
+         
+         setHasOptionsMenu(true);
+         mCheckPreferences = true;
+         return prefSet;
+     }
+     
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+    
+     if (!mCheckPreferences) {
+             return false;
+         }
+         AlertDialog dialog;
+ 
+         ContentResolver resolver = getActivity().getContentResolver();
+         
+         if (preference == mCustomHeaderDefault) {
+
+         int customHeaderDefault = Integer.valueOf((String) newValue);
+         int index = mCustomHeaderDefault.findIndexOfValue((String) newValue);
+         Settings.System.putInt(getActivity().getContentResolver(), 
+         Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, customHeaderDefault);
+         mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntries()[index]);
+         createCustomView();
+             return true;
+          }
+          
         return false;
     }
 
