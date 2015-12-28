@@ -86,6 +86,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_UBER_AND = "uber_android";
     private static final String KEY_UBER_KERNEL = "uber_kernel";
     private static final String KEY_UBER_FLAGS = "uber_flags";
+    private static final String KEY_ORION_OTA = "slimota";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -285,7 +286,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
                 ciActionOnSysUpdate(b);
             }
-        }
+        }  else if (preference.getKey().equals(KEY_ORION_OTA)) {
+                     boolean supported = false;
+                     try {
+                         supported = (getPackageManager().getPackageInfo("com.fusionjack.slimota", 0).versionCode > 0);
+                     } catch (PackageManager.NameNotFoundException e) {
+                     }
+        }           
+                     
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
@@ -515,6 +523,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                         R.bool.config_additional_system_update_setting_enable)) {
                     keys.add(KEY_UPDATE_SETTING);
                 }
+                keys.add(KEY_ORION_OTA);
                 return keys;
             }
 
