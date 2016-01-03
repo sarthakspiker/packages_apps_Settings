@@ -1252,7 +1252,8 @@ public class SettingsActivity extends Activity
                 boolean removeTile = false;
                 id = (int) tile.id;
                 if (id == R.id.operator_settings || id == R.id.manufacturer_settings
-                      || id == R.id.notification_slider) {
+                      || id == R.id.notification_slider
+                      || id == R.id.device_specific_gesture_settings) {
                     if (!Utils.updateTileToSpecificActivityFromMetaDataOrRemove(this, tile)) {
                         removeTile = true;
                     }
