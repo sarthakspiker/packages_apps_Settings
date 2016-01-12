@@ -14,4 +14,11 @@
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
         android:title="@string/lockscreen_tweaks_title">
 
+        <PreferenceScreen
+            android:key="lockscreen_wallpaper"
+            android:title="@string/lockscreen_wallpaper_title"
+            android:summary="@string/lockscreen_wallpaper_summary"
+            android:persistent="false"
+            android:fragment="com.android.settings.orion.LockscreenWallpaper">
+        </PreferenceScreen>
 </PreferenceScreen>
