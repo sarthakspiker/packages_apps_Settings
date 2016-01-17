@@ -15,4 +15,5 @@
      <!--Orion Version-->
      <string name="orion_version">Orion Version</string>
      <string name="orion_version_default">Unknown</string>
+     <string name="interface_settings_title">Universe</string>
 </resources>
