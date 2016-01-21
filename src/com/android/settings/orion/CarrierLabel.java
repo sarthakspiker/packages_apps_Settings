@@ -171,4 +171,10 @@ public class CarrierLabel extends SettingsPreferenceFragment implements OnPrefer
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
+    
+    @Override
+    protected int getMetricsCategory() {
+        // todo add a constant in MetricsLogger.java
+        return MetricsLogger.MAIN_SETTINGS;
+    }
 }
