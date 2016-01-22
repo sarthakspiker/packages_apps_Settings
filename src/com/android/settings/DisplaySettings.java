@@ -110,6 +110,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mAutoBrightnessPreference;
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
+private ListPreference mDashboardColumns;
 
 
     private ContentObserver mAccelerometerRotationObserver =
