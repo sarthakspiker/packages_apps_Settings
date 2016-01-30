@@ -3,8 +3,8 @@
     android:width="28dp"
     android:height="28dp"
     android:viewportWidth="28"
-    android:viewportHeight="28">
-
+    android:viewportHeight="28"
+    android:tint="?android:attr/colorAccent">
     <path
         android:fillColor="@*android:color/material_deep_teal_500"
         android:pathData="M 13.532022,27.396421 c -0.01056,-0.0098 -0.20821,-0.03252 -0.43921,-0.05054
