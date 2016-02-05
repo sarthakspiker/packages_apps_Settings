@@ -59,7 +59,7 @@ import java.util.Map;
 
 public class StatusBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
-    private static final String TAG = "StatusBarSettings";
+    private static final String TAG = "StatusBar";
 
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
  
@@ -78,7 +78,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.status_bar_settings);
         createCustomView();
         
     }
@@ -86,6 +85,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
  private PreferenceScreen createCustomView() {
        
         mCheckPreferences = false;
+        addPreferencesFromResource(R.xml.status_bar_settings);        
         PreferenceScreen prefSet = getPreferenceScreen();
         ContentResolver resolver = getActivity().getContentResolver();
  
