@@ -217,9 +217,9 @@
     <string name="battery_saver_color_summary">Enable orange status and navigation bars when battery saver is activated</string>
 
     
-  	<!-- Lockscreen tweaks -->
-	<string name="lockscreen_tweaks_title">Lockscreen tweaks</string>
-	<string name="lockscreen_tweaks">Lockscreen tweaks</string>
+    <!-- Lockscreen tweaks -->
+    <string name="lockscreen_tweaks_title">Lockscreen tweaks</string>
+    <string name="lockscreen_tweaks">Lockscreen tweaks</string>
 	
     <!-- Lockscreen wallpaper -->
     <string name="lockscreen_wallpaper_title">Wallpaper</string>
@@ -227,4 +227,10 @@
     <string name="lockscreen_wallpaper_set_title">Set lock screen wallpaper</string>
     <string name="lockscreen_wallpaper_clear_title">Clear lock screen wallpaper</string>
     <string name="reset_lockscreen_wallpaper">Set to default</string>
+
+    <!-- Hide Lockscreen clock & date -->
+    <string name="hide_lockscreen_items_title">Lockscreen items</string>
+    <string name="hide_lockscreen_clock_title">Show lockscreen clock</string>
+    <string name="hide_lockscreen_date_title">Show lockscreen date</string>
+
 </resources>
