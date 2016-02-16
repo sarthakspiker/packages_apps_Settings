@@ -299,4 +299,9 @@
     <!-- About phone screen, OrionOS device maintainer name -->
     <string name="device_maintainer">Device maintainer</string>
     <string name="device_maintainers">Device maintainers</string> 
+
+    <!-- Media art -->
+    <string name="media_art_title">Show media cover art</string>
+    <string name="media_art_summary">Enable media cover art on the lockscreen</string>
+
 </resources>
