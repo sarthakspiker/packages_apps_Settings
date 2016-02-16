@@ -332,4 +332,8 @@
     <string name="four_second">4 s</string>
     <string name="fourhalf_second">4.5 s</string>
     <string name="five_second">5 s</string>
+
+    <!-- Media art -->
+    <string name="media_art_title">Show media cover art</string>
+    <string name="media_art_summary">Enable media cover art on the lockscreen</string>
 </resources>
