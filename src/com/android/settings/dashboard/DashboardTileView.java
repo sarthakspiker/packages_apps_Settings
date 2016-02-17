@@ -72,6 +72,12 @@ public class DashboardTileView extends FrameLayout implements View.OnClickListen
         mSwitch = (Switch) view.findViewById(R.id.dashboard_switch);
 
         mDivider = view.findViewById(R.id.tile_divider);
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.DASHBOARD_TILEVIEW_DIVIDERS, 0) == 1) {
+        mDivider.setVisibility(View.GONE);
+        } else {
+        mDivider.setVisibility(View.VISIBLE);
+        }
 
         setOnClickListener(this);
         setBackgroundResource(R.drawable.dashboard_tile_background);

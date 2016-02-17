@@ -117,6 +117,18 @@
                 android:summary="@string/dashboard_columns_summary"
                 android:persistent="false" />
 
+        <com.android.settings.slim.SystemSettingSwitchPreference
+                android:key="dashboard_tileview_double_lines"
+                android:title="@string/dashboard_tileview_double_lines_title"
+                android:summary="@string/dashboard_tileview_double_lines_summary"
+                android:defaultValue="false" />
+
+        <com.android.settings.slim.SystemSettingSwitchPreference
+                android:key="dashboard_tileview_dividers"
+                android:title="@string/dashboard_tileview_dividers_title"
+                android:summary="@string/dashboard_tileview_dividers_summary"
+                android:defaultValue="false" />
+                
 	      <ListPreference
                 android:key="dashboard_switches"
                 android:title="@string/dashboard_switches_title"
