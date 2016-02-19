@@ -51,6 +51,13 @@
                 android:summary="@string/dashboard_columns_summary"
                 android:persistent="false" />
                 
+        <ListPreference
+                android:entries="@array/lcd_density_entries"
+                android:entryValues="@array/lcd_density_entries"
+                android:key="lcd_density"
+                android:title="@string/custom_density_title"
+                android:summary="@string/custom_density_summary" />
+                
         <PreferenceScreen
                 android:key="wallpaper"
                 android:title="@string/wallpaper_settings_title"

@@ -202,6 +202,7 @@
 
     <!-- Density Changer -->
     <string-array name="lcd_density_entries" translatable="false">
+        <item>220</item>
         <item>240</item>
         <item>242</item>
         <item>244</item>
