@@ -62,10 +62,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String TAG = "StatusBar";
 
     private static final String PREF_CUSTOM_HEADER_DEFAULT = "status_bar_custom_header_default";
- 
+    private static final String PREF_ENABLE_TASK_MANAGER = "enable_task_manager";
  
     private ListPreference mCustomHeaderDefault;
-    
+    private SwitchPreference mEnableTaskManager;
+
     private boolean mCheckPreferences;
     
     
@@ -106,7 +107,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                  .getContentResolver(), Settings.System.STATUS_BAR_CUSTOM_HEADER_DEFAULT, 0);
          mCustomHeaderDefault.setValue(String.valueOf(customHeaderDefault));
          mCustomHeaderDefault.setSummary(mCustomHeaderDefault.getEntry());
-         
+
+        // Task manager
+        mEnableTaskManager = (SwitchPreference) prefSet.findPreference(PREF_ENABLE_TASK_MANAGER);
+        mEnableTaskManager.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.ENABLE_TASK_MANAGER, 0) == 1));
+
          setHasOptionsMenu(true);
          mCheckPreferences = true;
          return prefSet;
@@ -133,6 +139,16 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
           }
           
         return false;
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+       if  (preference == mEnableTaskManager) {
+            boolean enabled = ((SwitchPreference)preference).isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.ENABLE_TASK_MANAGER, enabled ? 1:0);
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     @Override
