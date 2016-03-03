@@ -158,7 +158,7 @@
     <string name="custom_header_image_0">Default</string>
     <string name="custom_header_image_1">Modern</string>
     <string name="custom_header_image_2">Poly HD</string>
-     
+    <string name="custom_header_image_3">Orion</string>
    <!-- SuperSU header name - the app hides itself from launcher based on this resource name being present in com.android.settings -->
     <string name="supersu_title">SuperSU</string>
     
