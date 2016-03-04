@@ -108,4 +108,16 @@
 
     </PreferenceCategory>
 
+
+        <PreferenceCategory
+                android:key="keys_cat"
+                android:title="@string/button_keys_title" >
+
+           <SwitchPreference
+                android:key="app_switch_swap_buttons"
+                android:title="@string/hardware_keys_app_switch_swap_button_title"
+                android:summary="@string/hardware_keys_app_switch_swap_button_summary"
+                android:defaultValue="false" />
+        </PreferenceCategory>
+
 </PreferenceScreen>
