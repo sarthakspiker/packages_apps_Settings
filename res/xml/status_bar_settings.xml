@@ -19,22 +19,6 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
     android:title="@string/status_bar_title">
 
-    <PreferenceScreen
-        android:title="@string/status_bar_icon_blacklist_title"
-        android:summary="@string/status_bar_icon_blacklist_summary" >
-       <intent android:action="android.intent.action.MAIN"
-        android:targetPackage="com.android.systemui"
-        android:targetClass="com.android.systemui.tuner.TunerActivity" />
-    </PreferenceScreen>
- 
-    <PreferenceScreen
-        android:title="@string/quick_settings_title"
-        android:summary="@string/quick_settings_summary" >
-       <intent android:action="android.intent.action.MAIN"
-        android:targetPackage="com.android.systemui"
-        android:targetClass="com.android.systemui.tuner.QsActivity" />
-     </PreferenceScreen> 
-   
     <!-- Status bar tweaks -->
     <PreferenceCategory
         android:title="@string/status_bar_style_title">
