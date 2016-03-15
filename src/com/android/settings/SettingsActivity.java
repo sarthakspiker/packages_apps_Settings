@@ -1251,7 +1251,8 @@ public class SettingsActivity extends Activity
                 DashboardTile tile = category.getTile(n);
                 boolean removeTile = false;
                 id = (int) tile.id;
-                if (id == R.id.operator_settings || id == R.id.manufacturer_settings) {
+                if (id == R.id.operator_settings || id == R.id.manufacturer_settings
+                      || id == R.id.notification_slider) {
                     if (!Utils.updateTileToSpecificActivityFromMetaDataOrRemove(this, tile)) {
                         removeTile = true;
                     }
