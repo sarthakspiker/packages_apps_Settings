@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.util.Helpers;
 
 import com.android.internal.logging.MetricsLogger;
 
@@ -79,6 +80,7 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                 intent.setData(uri);
                 startActivity(intent);
+                Helpers.restartSystemUI();
             }
         }
     }
@@ -86,12 +88,13 @@ public class LockscreenWallpaper extends SettingsPreferenceFragment {
     private void setKeyguardWallpaper() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK);
+        startActivityForResult(intent, IMAGE_PICK);   
     }
 
     private void clearKeyguardWallpaper() {
         WallpaperManager wallpaperManager = null;
         wallpaperManager = WallpaperManager.getInstance(getActivity());
         wallpaperManager.clearKeyguardWallpaper();
+        Helpers.restartSystemUI();
     }
 }
