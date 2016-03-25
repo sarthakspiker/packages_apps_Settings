@@ -413,6 +413,6 @@
 
     <!-- Gesture Settings -->
     <!-- Settings main menu entry -->
-    <string name="gesture_settings_title">Device specific gestures</string>
+    <string name="gesture_settings_title">Gestures</string>
 
 </resources>
