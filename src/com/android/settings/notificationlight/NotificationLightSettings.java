@@ -44,8 +44,8 @@ import android.widget.ListView;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.tipsy.PackageListAdapter;
-import com.android.settings.tipsy.PackageListAdapter.PackageItem;
+import com.android.settings.slim.PackageListAdapter;
+import com.android.settings.slim.PackageListAdapter.PackageItem;
 import com.android.settings.slim.SystemSettingSwitchPreference;
 
 import java.util.ArrayList;
