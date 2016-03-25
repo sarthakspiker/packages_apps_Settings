@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.tipsy;
+package com.android.settings.slim;
 
 import android.content.Context;
 import android.content.Intent;
