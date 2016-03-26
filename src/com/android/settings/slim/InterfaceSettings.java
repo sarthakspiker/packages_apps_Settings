@@ -30,10 +30,14 @@ import android.preference.SwitchPreference;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 
 public class InterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
+    private static final String MOTO_DOZE_PACKAGE_NAME="com.cyanogenmod.settings.device";
+    private PreferenceScreen gesture_settings;
+    
     @Override
     protected int getMetricsCategory() {
         // todo add a constant in MetricsLogger.java
@@ -45,7 +49,13 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.slim_interface_settings);
-
+        
+        PreferenceScreen prefSet = getPreferenceScreen();
+        gesture_settings = (PreferenceScreen) findPreference("device_specific_gesture_settings");
+        //check for Moto doze
+        if (!Utils.isPackageInstalled(getActivity(), MOTO_DOZE_PACKAGE_NAME)) {
+            prefSet.removePreference(gesture_settings);
+        }
     }
 
     @Override
