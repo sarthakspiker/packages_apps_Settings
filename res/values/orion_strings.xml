@@ -16,6 +16,11 @@
   <string name="orion_version">Orion Version</string>
   <string name="orion_version_default">Unknown</string>
   <string name="interface_settings_title">Universe</string>
+  <string name="device_info_category">General info</string>
+  <string name="orion_device_info_category">Orion info</string>
+ 
+  <!-- Orion OTA -->
+  <string name="slimota_title">Updates</string>
 
   <!-- Color Picker -->
   <string name="dialog_color_picker">Color Picker</string>
