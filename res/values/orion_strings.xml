@@ -47,12 +47,15 @@
   <string name="volbtn_wake_device_summary">Pressing either volume button will wake your device</string>
 
   <!-- Notification light dialogs -->
-  <string name="edit_light_settings">Edit light settings</string>
-  <string name="pulse_speed_title">Pulse length and speed</string>
-  <string name="default_time">Normal</string>
-  <string name="custom_time">Custom</string>
-  <string name="dialog_delete_title">Delete</string>
-  <string name="dialog_delete_message">Remove selected item?</string>
+    <string name="edit_light_settings">Edit light settings</string>
+    <string name="pulse_speed_title">Pulse length and speed</string>
+    <string name="default_time">Normal</string>
+    <string name="custom_time">Custom</string>
+    <string name="dialog_delete_title">Delete</string>
+    <string name="dialog_delete_message">Remove selected item?</string>
+    <string name="profiles_add">Add</string>
+    <string name="profile_choose_app">Choose app</string>
+    <string name="profile_reset_title">Reset</string>
  
   <!-- Values for the notification light pulse spinners -->
   <string name="pulse_length_always_on">Always on</string>
