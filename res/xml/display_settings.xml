@@ -38,7 +38,7 @@
             android:persistent="false"
             android:entries="@array/night_mode_entries"
             android:entryValues="@array/night_mode_values" />
-                
+
         <PreferenceScreen
                 android:key="wallpaper"
                 android:title="@string/wallpaper_settings_title"
