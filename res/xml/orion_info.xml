@@ -15,8 +15,8 @@
 -->
  
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-        android:title="@string/about_settings">
- 
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
         <!-- Orion OTA -->
         <PreferenceScreen
                 android:key="slimota"

@@ -77,21 +77,18 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_SECURITY_PATCH = "security_patch";
-    private static final String KEY_ORION_VERSION = "orion_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_DEVICE_FEEDBACK = "device_feedback";
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
     private static final String KEY_MOD_VERSION = "mod_version";
-    private static final String KEY_DEVICE_MAINTAINER = "device_maintainer";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_MOD_API_LEVEL = "mod_api_level";
     private static final String KEY_CM_UPDATES = "cm_updates";
     private static final String KEY_UBER_AND = "uber_android";
     private static final String KEY_UBER_KERNEL = "uber_kernel";
     private static final String KEY_UBER_FLAGS = "uber_flags";
-    private static final String KEY_ORION_OTA = "slimota";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -139,15 +136,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_BUILD_NUMBER).setEnabled(true);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
-        setValueSummary(KEY_ORION_VERSION, "ro.orion.version");
-        findPreference(KEY_ORION_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
         findPreference(KEY_UBER_KERNEL).setEnabled(true);
         findPreference(KEY_UBER_FLAGS).setEnabled(true);
         setValueSummary(KEY_UBER_AND, "ro.uber.android");
         setValueSummary(KEY_UBER_KERNEL, "ro.uber.kernel");
         setValueSummary(KEY_UBER_FLAGS, "ro.uber.flags");
-        setMaintainerSummary(KEY_DEVICE_MAINTAINER, "ro.orion.maintainer");
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -301,13 +295,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             if (b.getBoolean(CarrierConfigManager.KEY_CI_ACTION_ON_SYS_UPDATE_BOOL)) {
                 ciActionOnSysUpdate(b);
             }
-        }  else if (preference.getKey().equals(KEY_ORION_OTA)) {
-                     boolean supported = false;
-                     try {
-                         supported = (getPackageManager().getPackageInfo("com.fusionjack.slimota", 0).versionCode > 0);
-                     } catch (PackageManager.NameNotFoundException e) {
-                     }
-        }           
+        }    
                      
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -370,20 +358,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
             findPreference(preference).setSummary(
                     SystemProperties.get(property,
                             getResources().getString(R.string.device_info_default)));
-        } catch (RuntimeException e) {
-            // No recovery
-        }
-    }
-
-    private void setMaintainerSummary(String preference, String property) {
-        try {
-            String maintainers = SystemProperties.get(property,
-                    getResources().getString(R.string.device_info_default));
-            findPreference(preference).setSummary(maintainers);
-            if (maintainers.contains(",")) {
-                findPreference(preference).setTitle(
-                        getResources().getString(R.string.device_maintainers));
-            }
         } catch (RuntimeException e) {
             // No recovery
         }
@@ -552,7 +526,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                         R.bool.config_additional_system_update_setting_enable)) {
                     keys.add(KEY_UPDATE_SETTING);
                 }
-                keys.add(KEY_ORION_OTA);
+                
                 return keys;
             }
 
