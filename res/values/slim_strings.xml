@@ -412,4 +412,7 @@
     <!-- Settings main menu entry -->
     <string name="gesture_settings_title">Gestures</string>
 
+    <!-- Slider Settings -->
+    <string name="slider_setting_title">Notification Slider</string>
+
 </resources>
