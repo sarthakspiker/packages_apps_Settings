@@ -70,7 +70,7 @@
 
        <!-- Notification Slider -->
      <PreferenceScreen
-                android:id="@+id/notification_slider"
+                android:key="notification_slider"
                    android:title="@string/slider_setting_title"  >
             <intent
                     android:action="com.cyanogenmod.action.LAUNCH_NOTIFICATION_SLIDER_SETTINGS"

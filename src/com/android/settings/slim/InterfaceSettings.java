@@ -37,6 +37,7 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
 
     private static final String MOTO_DOZE_PACKAGE_NAME="com.cyanogenmod.settings.device";
     private PreferenceScreen gesture_settings;
+    private PreferenceScreen notification_slider;
     
     @Override
     protected int getMetricsCategory() {
@@ -51,11 +52,26 @@ public class InterfaceSettings extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.slim_interface_settings);
         
         PreferenceScreen prefSet = getPreferenceScreen();
-        gesture_settings = (PreferenceScreen) findPreference("device_specific_gesture_settings");
+        
         //check for Moto doze
-        if (!Utils.isPackageInstalled(getActivity(), MOTO_DOZE_PACKAGE_NAME)) {
+        gesture_settings = (PreferenceScreen) findPreference("device_specific_gesture_settings");
+        
+        boolean showMotoDozeGestures = getResources().getBoolean(
+                com.android.internal.R.bool.config_showMotoDozeGestures);
+        
+        if (!showMotoDozeGestures) {
             prefSet.removePreference(gesture_settings);
         }
+        
+        //check for Notification slider
+        notification_slider = (PreferenceScreen) findPreference("notification_slider");
+        
+        boolean showNotificationSlider = getResources().getBoolean(
+                com.android.internal.R.bool.config_showNotificationSlider);
+                
+        if(!showNotificationSlider) {
+        	prefSet.removePreference(notification_slider);
+		}
     }
 
     @Override
