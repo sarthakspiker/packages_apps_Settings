@@ -66,7 +66,16 @@
             android:action="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS"
             android:targetPackage="com.cyanogenmod.settings.device"
             android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
-     	</PreferenceScreen>    
+     	</PreferenceScreen>   
+
+    <PreferenceScreen
+            android:key="button_settings"
+            android:title="@string/button_panel_title">
+            <intent
+            android:action="com.android.settings.action.EXTRA_SETTINGS" 
+            android:targetPackage="com.cyanogenmod.settings.device"
+            android:targetClass="com.cyanogenmod.settings.device.ButtonSettings" />
+    </PreferenceScreen>   
 
        <!-- Notification Slider -->
      <PreferenceScreen
